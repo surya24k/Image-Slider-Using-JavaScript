@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="slider-container">
+        <img src="assets/image one.jpg" alt="Image 1" class="slider-image active">
+        <img src="assets/image two.jpg" alt="Image 2" class="slider-image">
+        <img src="assets/image three.jpg" alt="Image 3" class="slider-image">
+        <a href="#" class="slider-button prev" onclick="changeSlide(-1)">❮</a>
+        <a href="#" class="slider-button next" onclick="changeSlide(1)">❯</a>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider-image');
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        function changeSlide(n) {
+            showSlide(currentSlide + n);
+        }
+
+        // Optional: Auto-advance slides every 5 seconds
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>
